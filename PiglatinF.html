@@ -1,0 +1,49 @@
+<!--Kristal Bautista 1/25/2023-->
+
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <div id="container">
+      <form>
+        <span id="transPigLatin">English word or sentence. Refresh page for new entry</span>
+        <input type="text" name="english" id="english" />
+        <input type="button" value="Translate" id="translate" /><br />
+        <p id="output"></p>
+      </form>
+    </div>
+    <script>
+      var button = document.getElementById('translate');
+      var englishText = document.getElementById('english');
+      var pigText = document.getElementById('transPigLatin');
+      var output = document.getElementById('output');
+
+      function translateToPigLatin(englishTextElement) {
+      	var englishText = englishTextElement.value;
+        var forceLower = englishText.toLowerCase();
+        var textLeng = englishText.length;
+
+      	// regular expression looking for vowels while ignoring cases
+      	var vowels = /aeiou/gi;
+      	pigLatin = '';
+
+                if (textLeng <= 1)
+                {
+                    alert('Not a valid input');
+                }
+                
+      	if (englishText.match(vowels)) {
+      		pigLatin = forceLower + 'way';
+      	}
+      	else {
+      		pigLatin = forceLower + 'ay';
+      	}
+      	return pigLatin;
+      }
+
+      button.onclick = function () {
+      	output.innerHTML += translateToPigLatin(englishText);
+      }
+    </script>
+  </body>
+</html>
